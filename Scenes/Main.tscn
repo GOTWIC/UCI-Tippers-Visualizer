@@ -1,0 +1,48 @@
+[gd_scene load_steps=6 format=3 uid="uid://j6u5ftoc6wn1"]
+
+[ext_resource type="Script" path="res://Scripts/root.gd" id="1_irsp1"]
+[ext_resource type="Script" path="res://Scripts/CameraControls.gd" id="2_4m3mj"]
+[ext_resource type="Material" uid="uid://wqwccqgedhs8" path="res://materials/background.tres" id="3_3j1kv"]
+[ext_resource type="Texture2D" uid="uid://8bdifqgn8fy5" path="res://resources/menuIcon.png" id="3_cast4"]
+[ext_resource type="Script" path="res://Scripts/MenuButton.gd" id="4_086k4"]
+
+[node name="Root" type="Node3D"]
+script = ExtResource("1_irsp1")
+
+[node name="MapView" type="Node3D" parent="."]
+
+[node name="Camera" type="Camera3D" parent="MapView"]
+transform = Transform3D(-1, -5.61943e-08, 6.69697e-08, 0, 0.766044, 0.642788, -8.74228e-08, 0.642788, -0.766044, 0, 21, -36)
+current = true
+fov = 40.0
+size = 50.0
+script = ExtResource("2_4m3mj")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="MapView"]
+transform = Transform3D(1, 0, 0, 0, -0.34202, 0.939693, 0, -0.939693, -0.34202, 0, 21, -36)
+
+[node name="Background" type="CSGBox3D" parent="MapView"]
+transform = Transform3D(1000, 0, 0, 0, 1, 0, 0, 0, 1000, 0, -39.22, 0)
+material = ExtResource("3_3j1kv")
+
+[node name="GraphView" type="Node2D" parent="."]
+
+[node name="ListView" type="Node2D" parent="."]
+
+[node name="Navigation" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MenuButton" type="MenuButton" parent="Navigation"]
+layout_mode = 0
+offset_left = 18.0
+offset_top = 16.0
+offset_right = 102.0
+offset_bottom = 108.0
+toggle_mode = false
+icon = ExtResource("3_cast4")
+expand_icon = true
+switch_on_hover = true
+script = ExtResource("4_086k4")

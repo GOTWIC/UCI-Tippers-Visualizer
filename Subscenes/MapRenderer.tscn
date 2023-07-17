@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://cnp858d816k8e"]
+
+[ext_resource type="Script" path="res://Scripts/MapRenderer.gd" id="1_tylwc"]
+
+[node name="MapRenderer" type="Node3D"]
+script = ExtResource("1_tylwc")
+
+[node name="OccupancyDisplay" type="Label" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -106.5
+offset_top = -48.0
+offset_right = 106.5
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.254902, 0.54902, 0.870588, 1)
+theme_override_font_sizes/font_size = 32
+text = "Occupancy: 0"

@@ -1,0 +1,99 @@
+[gd_scene load_steps=8 format=3 uid="uid://ctfsdmdnq8qlb"]
+
+[ext_resource type="Texture2D" uid="uid://bk23qx7ei6512" path="res://resources/sampleGraphImage.png" id="1_ghje5"]
+[ext_resource type="Script" path="res://Scripts/GraphMenu_Building.gd" id="2_derji"]
+[ext_resource type="Script" path="res://Scripts/GraphMenu_Floor.gd" id="3_vp3wq"]
+[ext_resource type="Script" path="res://Scripts/GraphMenu_Room.gd" id="4_5ahok"]
+[ext_resource type="Script" path="res://Scripts/GraphMenu_Aggregation.gd" id="5_fooqv"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_axjmi"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_s6oc8"]
+texture = SubResource("PlaceholderTexture2D_axjmi")
+draw_center = false
+
+[node name="Node2D" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -22.0
+offset_top = -19.0
+offset_right = 1180.0
+offset_bottom = 664.0
+color = Color(0, 0.278431, 0.282353, 1)
+
+[node name="SampleGraphImage" type="Sprite2D" parent="."]
+position = Vector2(581, 350)
+scale = Vector2(0.724706, 0.744495)
+texture = ExtResource("1_ghje5")
+
+[node name="Controls" type="Node2D" parent="."]
+
+[node name="BuildingContainer" type="PanelContainer" parent="Controls"]
+offset_left = 140.0
+offset_top = 35.0
+offset_right = 320.0
+offset_bottom = 85.0
+
+[node name="MenuButton" type="MenuButton" parent="Controls/BuildingContainer"]
+layout_mode = 2
+text = "Select Building"
+script = ExtResource("2_derji")
+
+[node name="FloorContainer" type="PanelContainer" parent="Controls"]
+offset_left = 370.0
+offset_top = 35.0
+offset_right = 550.0
+offset_bottom = 85.0
+
+[node name="MenuButton" type="MenuButton" parent="Controls/FloorContainer"]
+layout_mode = 2
+text = "Select Floor"
+script = ExtResource("3_vp3wq")
+
+[node name="RoomContainer" type="PanelContainer" parent="Controls"]
+offset_left = 600.0
+offset_top = 35.0
+offset_right = 780.0
+offset_bottom = 85.0
+
+[node name="MenuButton" type="MenuButton" parent="Controls/RoomContainer"]
+layout_mode = 2
+text = "Select Room"
+script = ExtResource("4_5ahok")
+
+[node name="AggregationContainer" type="PanelContainer" parent="Controls"]
+offset_left = 830.0
+offset_top = 35.0
+offset_right = 1010.0
+offset_bottom = 85.0
+
+[node name="MenuButton" type="MenuButton" parent="Controls/AggregationContainer"]
+layout_mode = 2
+text = "Select Aggregation
+"
+script = ExtResource("5_fooqv")
+
+[node name="TimeContainer" type="PanelContainer" parent="Controls"]
+offset_left = 140.0
+offset_top = 560.0
+offset_right = 1010.0
+offset_bottom = 637.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_s6oc8")
+
+[node name="Label" type="Label" parent="Controls/TimeContainer"]
+layout_mode = 2
+text = "Time Window
+"
+horizontal_alignment = 1
+
+[node name="BeginSlider" type="HSlider" parent="Controls/TimeContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="EndSlider" type="HSlider" parent="Controls/TimeContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+value = 100.0
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(1152, 648)

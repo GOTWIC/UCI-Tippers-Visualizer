@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://dyyepejmjy7ka"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h42ns"]
+transparency = 1
+albedo_color = Color(0.670588, 0.670588, 0.670588, 1)
+
+[node name="PolygonPrefab" type="Node3D"]
+
+[node name="Polygon" type="CSGPolygon3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+polygon = PackedVector2Array()
+depth = 4.0
+material = SubResource("StandardMaterial3D_h42ns")
+
+[node name="Area3D" type="Area3D" parent="Polygon"]
+
+[node name="collision" type="CollisionPolygon3D" parent="Polygon/Area3D"]
