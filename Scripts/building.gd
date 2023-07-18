@@ -27,7 +27,7 @@ func _ready():
 	get_node("Area3D").mouse_entered.connect(self.mouseEnter)
 	get_node("Area3D").mouse_exited.connect(self.mouseExit)
 	
-	occupancyText = get_tree().get_root().get_node("Root").get_node("MapView").get_node("MapRenderer").get_node("OccupancyDisplay")
+	occupancyText = get_tree().get_root().get_node("Root").get_node("MapView").get_node("MapRenderer").get_node("PanelContainer").get_node("OccupancyDisplay")
 
 
 func _process(delta):
