@@ -15,10 +15,11 @@ var hovering : bool = false
 var occupancy = 0
 var occupancyText
 
+
 func _ready():
 	originalColor = self.material.albedo_color
 	var collider = get_node("Area3D").get_node("collision")
-	collider.polygon = PackedVector2Array([Vector2(0, 0), Vector2(1, 2), Vector2(-1, 3), Vector2(-3, 1)])
+	collider.polygon = self.polygon
 	collider.depth = self.depth
 	collider.position[2] -= self.depth/2
 	
