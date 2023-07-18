@@ -1,0 +1,885 @@
+[gd_scene load_steps=5 format=3 uid="uid://dg7x8cakncdkt"]
+
+[ext_resource type="Script" path="res://Scripts/GraphMenu_Building.gd" id="1_j3x1i"]
+[ext_resource type="Script" path="res://Scripts/GraphMenu_Floor.gd" id="2_k5yel"]
+[ext_resource type="Script" path="res://Scripts/GraphMenu_Room.gd" id="3_ta5xj"]
+[ext_resource type="Script" path="res://Scripts/GraphMenu_Aggregation.gd" id="4_jwgu1"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -22.0
+offset_top = -19.0
+offset_right = 1180.0
+offset_bottom = 664.0
+color = Color(0.266667, 0, 0.282353, 1)
+
+[node name="BuildingContainer" type="PanelContainer" parent="."]
+offset_left = 140.0
+offset_top = 35.0
+offset_right = 320.0
+offset_bottom = 85.0
+
+[node name="MenuButton" type="MenuButton" parent="BuildingContainer"]
+layout_mode = 2
+text = "Select Building"
+script = ExtResource("1_j3x1i")
+
+[node name="FloorContainer" type="PanelContainer" parent="."]
+offset_left = 370.0
+offset_top = 35.0
+offset_right = 550.0
+offset_bottom = 85.0
+
+[node name="MenuButton" type="MenuButton" parent="FloorContainer"]
+layout_mode = 2
+text = "Select Floor"
+script = ExtResource("2_k5yel")
+
+[node name="RoomContainer" type="PanelContainer" parent="."]
+offset_left = 600.0
+offset_top = 35.0
+offset_right = 780.0
+offset_bottom = 85.0
+
+[node name="MenuButton" type="MenuButton" parent="RoomContainer"]
+layout_mode = 2
+text = "Select Room"
+script = ExtResource("3_ta5xj")
+
+[node name="AggregationContainer" type="PanelContainer" parent="."]
+offset_left = 830.0
+offset_top = 35.0
+offset_right = 1010.0
+offset_bottom = 85.0
+
+[node name="MenuButton" type="MenuButton" parent="AggregationContainer"]
+layout_mode = 2
+text = "Select Aggregation
+"
+script = ExtResource("4_jwgu1")
+
+[node name="ListRow" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 26.0
+offset_top = -115.0
+offset_right = 326.0
+offset_bottom = -65.0
+
+[node name="entity" type="Panel" parent="ListRow"]
+offset_left = 400.0
+offset_top = 239.0
+offset_right = 550.0
+offset_bottom = 289.0
+
+[node name="ColorRect" type="ColorRect" parent="ListRow/entity"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -73.0
+offset_top = -23.0
+offset_right = 73.0
+offset_bottom = 23.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.615686, 0.329412, 0.615686, 1)
+
+[node name="Label" type="Label" parent="ListRow/entity"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -43.0
+offset_top = -13.0
+offset_right = 43.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Room 1001"
+horizontal_alignment = 1
+
+[node name="aggregation" type="Panel" parent="ListRow"]
+offset_left = 548.0
+offset_top = 239.0
+offset_right = 698.0
+offset_bottom = 289.0
+
+[node name="ColorRect" type="ColorRect" parent="ListRow/aggregation"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -73.0
+offset_top = -23.0
+offset_right = 73.0
+offset_bottom = 23.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.615686, 0.329412, 0.615686, 1)
+
+[node name="Label" type="Label" parent="ListRow/aggregation"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -43.0
+offset_top = -13.0
+offset_right = 43.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "28
+"
+horizontal_alignment = 1
+
+[node name="ListRow2" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 26.0
+offset_top = -65.0
+offset_right = 326.0
+offset_bottom = -15.0
+
+[node name="entity" type="Panel" parent="ListRow2"]
+offset_left = 400.0
+offset_top = 239.0
+offset_right = 550.0
+offset_bottom = 289.0
+
+[node name="ColorRect" type="ColorRect" parent="ListRow2/entity"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -73.0
+offset_top = -23.0
+offset_right = 73.0
+offset_bottom = 23.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.776471, 0.498039, 0.772549, 1)
+
+[node name="Label" type="Label" parent="ListRow2/entity"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -43.0
+offset_top = -13.0
+offset_right = 43.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Room 4870"
+horizontal_alignment = 1
+
+[node name="aggregation" type="Panel" parent="ListRow2"]
+offset_left = 548.0
+offset_top = 239.0
+offset_right = 698.0
+offset_bottom = 289.0
+
+[node name="ColorRect" type="ColorRect" parent="ListRow2/aggregation"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -73.0
+offset_top = -23.0
+offset_right = 73.0
+offset_bottom = 23.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.776471, 0.498039, 0.772549, 1)
+
+[node name="Label" type="Label" parent="ListRow2/aggregation"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -43.0
+offset_top = -13.0
+offset_right = 43.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "23"
+horizontal_alignment = 1
+
+[node name="ListRow3" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 26.0
+offset_top = -15.0
+offset_right = 326.0
+offset_bottom = 35.0
+
+[node name="entity" type="Panel" parent="ListRow3"]
+offset_left = 400.0
+offset_top = 239.0
+offset_right = 550.0
+offset_bottom = 289.0
+
+[node name="ColorRect" type="ColorRect" parent="ListRow3/entity"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -73.0
+offset_top = -23.0
+offset_right = 73.0
+offset_bottom = 23.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.615686, 0.329412, 0.615686, 1)
+
+[node name="Label" type="Label" parent="ListRow3/entity"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -43.0
+offset_top = -13.0
+offset_right = 43.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Room 2397"
+horizontal_alignment = 1
+
+[node name="aggregation" type="Panel" parent="ListRow3"]
+offset_left = 548.0
+offset_top = 239.0
+offset_right = 698.0
+offset_bottom = 289.0
+
+[node name="ColorRect" type="ColorRect" parent="ListRow3/aggregation"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -73.0
+offset_top = -23.0
+offset_right = 73.0
+offset_bottom = 23.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.615686, 0.329412, 0.615686, 1)
+
+[node name="Label" type="Label" parent="ListRow3/aggregation"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -43.0
+offset_top = -13.0
+offset_right = 43.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "19"
+horizontal_alignment = 1
+
+[node name="ListRow4" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 26.0
+offset_top = 35.0
+offset_right = 326.0
+offset_bottom = 85.0
+
+[node name="entity" type="Panel" parent="ListRow4"]
+offset_left = 400.0
+offset_top = 239.0
+offset_right = 550.0
+offset_bottom = 289.0
+
+[node name="ColorRect" type="ColorRect" parent="ListRow4/entity"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -73.0
+offset_top = -23.0
+offset_right = 73.0
+offset_bottom = 23.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.776471, 0.498039, 0.772549, 1)
+
+[node name="Label" type="Label" parent="ListRow4/entity"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -43.0
+offset_top = -13.0
+offset_right = 43.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Room 2459"
+horizontal_alignment = 1
+
+[node name="aggregation" type="Panel" parent="ListRow4"]
+offset_left = 548.0
+offset_top = 239.0
+offset_right = 698.0
+offset_bottom = 289.0
+
+[node name="ColorRect" type="ColorRect" parent="ListRow4/aggregation"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -73.0
+offset_top = -23.0
+offset_right = 73.0
+offset_bottom = 23.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.776471, 0.498039, 0.772549, 1)
+
+[node name="Label" type="Label" parent="ListRow4/aggregation"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -43.0
+offset_top = -13.0
+offset_right = 43.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "16"
+horizontal_alignment = 1
+
+[node name="ListRow5" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 26.0
+offset_top = 85.0
+offset_right = 326.0
+offset_bottom = 135.0
+
+[node name="entity" type="Panel" parent="ListRow5"]
+offset_left = 400.0
+offset_top = 239.0
+offset_right = 550.0
+offset_bottom = 289.0
+
+[node name="ColorRect" type="ColorRect" parent="ListRow5/entity"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -73.0
+offset_top = -23.0
+offset_right = 73.0
+offset_bottom = 23.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.615686, 0.329412, 0.615686, 1)
+
+[node name="Label" type="Label" parent="ListRow5/entity"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -43.0
+offset_top = -13.0
+offset_right = 43.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Room 7836"
+horizontal_alignment = 1
+
+[node name="aggregation" type="Panel" parent="ListRow5"]
+offset_left = 548.0
+offset_top = 239.0
+offset_right = 698.0
+offset_bottom = 289.0
+
+[node name="ColorRect" type="ColorRect" parent="ListRow5/aggregation"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -73.0
+offset_top = -23.0
+offset_right = 73.0
+offset_bottom = 23.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.615686, 0.329412, 0.615686, 1)
+
+[node name="Label" type="Label" parent="ListRow5/aggregation"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -43.0
+offset_top = -13.0
+offset_right = 43.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "16"
+horizontal_alignment = 1
+
+[node name="ListRow6" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 26.0
+offset_top = 135.0
+offset_right = 326.0
+offset_bottom = 185.0
+
+[node name="entity" type="Panel" parent="ListRow6"]
+offset_left = 400.0
+offset_top = 239.0
+offset_right = 550.0
+offset_bottom = 289.0
+
+[node name="ColorRect" type="ColorRect" parent="ListRow6/entity"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -73.0
+offset_top = -23.0
+offset_right = 73.0
+offset_bottom = 23.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.776471, 0.498039, 0.772549, 1)
+
+[node name="Label" type="Label" parent="ListRow6/entity"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -43.0
+offset_top = -13.0
+offset_right = 43.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Room 4975"
+horizontal_alignment = 1
+
+[node name="aggregation" type="Panel" parent="ListRow6"]
+offset_left = 548.0
+offset_top = 239.0
+offset_right = 698.0
+offset_bottom = 289.0
+
+[node name="ColorRect" type="ColorRect" parent="ListRow6/aggregation"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -73.0
+offset_top = -23.0
+offset_right = 73.0
+offset_bottom = 23.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.776471, 0.498039, 0.772549, 1)
+
+[node name="Label" type="Label" parent="ListRow6/aggregation"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -43.0
+offset_top = -13.0
+offset_right = 43.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "15
+"
+horizontal_alignment = 1
+
+[node name="ListRow7" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 26.0
+offset_top = 185.0
+offset_right = 326.0
+offset_bottom = 235.0
+
+[node name="entity" type="Panel" parent="ListRow7"]
+offset_left = 400.0
+offset_top = 239.0
+offset_right = 550.0
+offset_bottom = 289.0
+
+[node name="ColorRect" type="ColorRect" parent="ListRow7/entity"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -73.0
+offset_top = -23.0
+offset_right = 73.0
+offset_bottom = 23.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.615686, 0.329412, 0.615686, 1)
+
+[node name="Label" type="Label" parent="ListRow7/entity"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -43.0
+offset_top = -13.0
+offset_right = 43.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Room 2653"
+horizontal_alignment = 1
+
+[node name="aggregation" type="Panel" parent="ListRow7"]
+offset_left = 548.0
+offset_top = 239.0
+offset_right = 698.0
+offset_bottom = 289.0
+
+[node name="ColorRect" type="ColorRect" parent="ListRow7/aggregation"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -73.0
+offset_top = -23.0
+offset_right = 73.0
+offset_bottom = 23.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.615686, 0.329412, 0.615686, 1)
+
+[node name="Label" type="Label" parent="ListRow7/aggregation"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -43.0
+offset_top = -13.0
+offset_right = 43.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "14
+"
+horizontal_alignment = 1
+
+[node name="ListRow8" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 26.0
+offset_top = 235.0
+offset_right = 326.0
+offset_bottom = 285.0
+
+[node name="entity" type="Panel" parent="ListRow8"]
+offset_left = 400.0
+offset_top = 239.0
+offset_right = 550.0
+offset_bottom = 289.0
+
+[node name="ColorRect" type="ColorRect" parent="ListRow8/entity"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -73.0
+offset_top = -23.0
+offset_right = 73.0
+offset_bottom = 23.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.776471, 0.498039, 0.772549, 1)
+
+[node name="Label" type="Label" parent="ListRow8/entity"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -43.0
+offset_top = -13.0
+offset_right = 43.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Room 1768"
+horizontal_alignment = 1
+
+[node name="aggregation" type="Panel" parent="ListRow8"]
+offset_left = 548.0
+offset_top = 239.0
+offset_right = 698.0
+offset_bottom = 289.0
+
+[node name="ColorRect" type="ColorRect" parent="ListRow8/aggregation"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -73.0
+offset_top = -23.0
+offset_right = 73.0
+offset_bottom = 23.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.776471, 0.498039, 0.772549, 1)
+
+[node name="Label" type="Label" parent="ListRow8/aggregation"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -43.0
+offset_top = -13.0
+offset_right = 43.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "12
+"
+horizontal_alignment = 1
+
+[node name="ListRow9" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 26.0
+offset_top = 285.0
+offset_right = 326.0
+offset_bottom = 335.0
+
+[node name="entity" type="Panel" parent="ListRow9"]
+offset_left = 400.0
+offset_top = 239.0
+offset_right = 550.0
+offset_bottom = 289.0
+
+[node name="ColorRect" type="ColorRect" parent="ListRow9/entity"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -73.0
+offset_top = -23.0
+offset_right = 73.0
+offset_bottom = 23.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.615686, 0.329412, 0.615686, 1)
+
+[node name="Label" type="Label" parent="ListRow9/entity"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -43.0
+offset_top = -13.0
+offset_right = 43.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Room 7248"
+horizontal_alignment = 1
+
+[node name="aggregation" type="Panel" parent="ListRow9"]
+offset_left = 548.0
+offset_top = 239.0
+offset_right = 698.0
+offset_bottom = 289.0
+
+[node name="ColorRect" type="ColorRect" parent="ListRow9/aggregation"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -73.0
+offset_top = -23.0
+offset_right = 73.0
+offset_bottom = 23.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.615686, 0.329412, 0.615686, 1)
+
+[node name="Label" type="Label" parent="ListRow9/aggregation"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -43.0
+offset_top = -13.0
+offset_right = 43.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "12"
+horizontal_alignment = 1
+
+[node name="ListRow10" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 26.0
+offset_top = 335.0
+offset_right = 326.0
+offset_bottom = 385.0
+
+[node name="entity" type="Panel" parent="ListRow10"]
+offset_left = 400.0
+offset_top = 239.0
+offset_right = 550.0
+offset_bottom = 289.0
+
+[node name="ColorRect" type="ColorRect" parent="ListRow10/entity"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -73.0
+offset_top = -23.0
+offset_right = 73.0
+offset_bottom = 23.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.776471, 0.498039, 0.772549, 1)
+
+[node name="Label" type="Label" parent="ListRow10/entity"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -43.0
+offset_top = -13.0
+offset_right = 43.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Room 3006"
+horizontal_alignment = 1
+
+[node name="aggregation" type="Panel" parent="ListRow10"]
+offset_left = 548.0
+offset_top = 239.0
+offset_right = 698.0
+offset_bottom = 289.0
+
+[node name="ColorRect" type="ColorRect" parent="ListRow10/aggregation"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -73.0
+offset_top = -23.0
+offset_right = 73.0
+offset_bottom = 23.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.776471, 0.498039, 0.772549, 1)
+
+[node name="Label" type="Label" parent="ListRow10/aggregation"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -43.0
+offset_top = -13.0
+offset_right = 43.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "12
+"
+horizontal_alignment = 1
