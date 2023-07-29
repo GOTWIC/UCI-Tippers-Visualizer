@@ -14,17 +14,18 @@ var tileSize = 2
 
 var tilesLoaded = 0
 
+var entity_hierarchy = {}
+
 # Not sure what dictates this
 # EDIT: The following is obsolete for now. Remove if map is doesn't seem off in the future
 var angledCameraTileOffset = 0.0
 
 var floorHeight = 0.2
 
-
-
 func _ready():
 	mapCreationProcess()
 	buildingCreationProcess()
+	
 	
 func _process(_delta):
 	pass
@@ -40,11 +41,6 @@ func mapCreationProcess():
 	add_child(http2)
 	add_child(http3)
 	add_child(http4)
-
-	#http1.use_threads = true
-	#http2.use_threads = true
-	#http3.use_threads = true
-	#http4.use_threads = true
 
 	var dlJobs = tileCoords.size() / 4
 
@@ -87,15 +83,17 @@ func downloadImage(http, xCoord, yCoord):
 	
 	return texture
 
+
 func buildingCreationProcess():
-	#var legacypoints1 = PackedVector2Array([Vector2(0, 0), Vector2(1, 2), Vector2(-1, 3), Vector2(-3, 1)])
-	#var legacypoints2 = PackedVector2Array([Vector2(0.05, 5.495), Vector2(0.49, 6.055), Vector2(0.8, 5.82), Vector2(0.96, 6.02), Vector2(1.51, 5.59), Vector2(1.32, 5.35), Vector2(1.63, 5.11), Vector2(1.22, 4.6), Vector2(0.92, 4.825), Vector2(0.74, 4.61), Vector2(0.185, 5.04), Vector2(0.35, 5.225)])
-	#var floors = 6
+	pass
+			
+			
+		
 	
-	#createBuilding(legacypoints1, floors, 10)
-	#createBuilding(legacypoints2, floors, -5)
-	
-	
+
+
+
+func buildingCreationProcessHardcoded():
 	var rng = RandomNumberGenerator.new()
 	var buildings = get_tree().get_root().get_node("Root").get_node("TEMPBUILDINGS").get_children()
 	for building in buildings:
@@ -105,8 +103,6 @@ func buildingCreationProcess():
 			points.append(Vector2(refPoint.global_position[0], refPoint.global_position[2]))
 		createBuilding(points, int(rng.randf_range(3, 7)))
 
-	
-	
 func createBuilding(points, numFloors):
 	var building = createPolygon(points, floorHeight * numFloors, true)
 	var floors = []

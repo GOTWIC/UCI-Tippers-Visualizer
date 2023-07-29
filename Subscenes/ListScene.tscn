@@ -68,6 +68,7 @@ offset_right = 326.0
 offset_bottom = -65.0
 
 [node name="entity" type="Panel" parent="ListRow"]
+layout_mode = 0
 offset_left = 400.0
 offset_top = 239.0
 offset_right = 550.0
@@ -105,6 +106,7 @@ text = "Room 1001"
 horizontal_alignment = 1
 
 [node name="aggregation" type="Panel" parent="ListRow"]
+layout_mode = 0
 offset_left = 548.0
 offset_top = 239.0
 offset_right = 698.0
@@ -151,6 +153,7 @@ offset_right = 326.0
 offset_bottom = -15.0
 
 [node name="entity" type="Panel" parent="ListRow2"]
+layout_mode = 0
 offset_left = 400.0
 offset_top = 239.0
 offset_right = 550.0
@@ -188,6 +191,7 @@ text = "Room 4870"
 horizontal_alignment = 1
 
 [node name="aggregation" type="Panel" parent="ListRow2"]
+layout_mode = 0
 offset_left = 548.0
 offset_top = 239.0
 offset_right = 698.0
@@ -233,6 +237,7 @@ offset_right = 326.0
 offset_bottom = 35.0
 
 [node name="entity" type="Panel" parent="ListRow3"]
+layout_mode = 0
 offset_left = 400.0
 offset_top = 239.0
 offset_right = 550.0
@@ -270,6 +275,7 @@ text = "Room 2397"
 horizontal_alignment = 1
 
 [node name="aggregation" type="Panel" parent="ListRow3"]
+layout_mode = 0
 offset_left = 548.0
 offset_top = 239.0
 offset_right = 698.0
@@ -315,6 +321,7 @@ offset_right = 326.0
 offset_bottom = 85.0
 
 [node name="entity" type="Panel" parent="ListRow4"]
+layout_mode = 0
 offset_left = 400.0
 offset_top = 239.0
 offset_right = 550.0
@@ -352,6 +359,7 @@ text = "Room 2459"
 horizontal_alignment = 1
 
 [node name="aggregation" type="Panel" parent="ListRow4"]
+layout_mode = 0
 offset_left = 548.0
 offset_top = 239.0
 offset_right = 698.0
@@ -397,6 +405,7 @@ offset_right = 326.0
 offset_bottom = 135.0
 
 [node name="entity" type="Panel" parent="ListRow5"]
+layout_mode = 0
 offset_left = 400.0
 offset_top = 239.0
 offset_right = 550.0
@@ -434,6 +443,7 @@ text = "Room 7836"
 horizontal_alignment = 1
 
 [node name="aggregation" type="Panel" parent="ListRow5"]
+layout_mode = 0
 offset_left = 548.0
 offset_top = 239.0
 offset_right = 698.0
@@ -479,6 +489,7 @@ offset_right = 326.0
 offset_bottom = 185.0
 
 [node name="entity" type="Panel" parent="ListRow6"]
+layout_mode = 0
 offset_left = 400.0
 offset_top = 239.0
 offset_right = 550.0
@@ -516,6 +527,7 @@ text = "Room 4975"
 horizontal_alignment = 1
 
 [node name="aggregation" type="Panel" parent="ListRow6"]
+layout_mode = 0
 offset_left = 548.0
 offset_top = 239.0
 offset_right = 698.0
@@ -562,6 +574,7 @@ offset_right = 326.0
 offset_bottom = 235.0
 
 [node name="entity" type="Panel" parent="ListRow7"]
+layout_mode = 0
 offset_left = 400.0
 offset_top = 239.0
 offset_right = 550.0
@@ -599,6 +612,7 @@ text = "Room 2653"
 horizontal_alignment = 1
 
 [node name="aggregation" type="Panel" parent="ListRow7"]
+layout_mode = 0
 offset_left = 548.0
 offset_top = 239.0
 offset_right = 698.0
@@ -645,6 +659,7 @@ offset_right = 326.0
 offset_bottom = 285.0
 
 [node name="entity" type="Panel" parent="ListRow8"]
+layout_mode = 0
 offset_left = 400.0
 offset_top = 239.0
 offset_right = 550.0
@@ -682,6 +697,7 @@ text = "Room 1768"
 horizontal_alignment = 1
 
 [node name="aggregation" type="Panel" parent="ListRow8"]
+layout_mode = 0
 offset_left = 548.0
 offset_top = 239.0
 offset_right = 698.0
@@ -728,6 +744,7 @@ offset_right = 326.0
 offset_bottom = 335.0
 
 [node name="entity" type="Panel" parent="ListRow9"]
+layout_mode = 0
 offset_left = 400.0
 offset_top = 239.0
 offset_right = 550.0
@@ -765,6 +782,7 @@ text = "Room 7248"
 horizontal_alignment = 1
 
 [node name="aggregation" type="Panel" parent="ListRow9"]
+layout_mode = 0
 offset_left = 548.0
 offset_top = 239.0
 offset_right = 698.0
@@ -810,6 +828,7 @@ offset_right = 326.0
 offset_bottom = 385.0
 
 [node name="entity" type="Panel" parent="ListRow10"]
+layout_mode = 0
 offset_left = 400.0
 offset_top = 239.0
 offset_right = 550.0
@@ -847,6 +866,7 @@ text = "Room 3006"
 horizontal_alignment = 1
 
 [node name="aggregation" type="Panel" parent="ListRow10"]
+layout_mode = 0
 offset_left = 548.0
 offset_top = 239.0
 offset_right = 698.0

@@ -1,24 +1,20 @@
 extends Node
 
-const POSTGREST_HOST = "localhost" # set your PostgREST host here
+const POSTGREST_HOST = "steptippers-caredex.ics.uci.edu" # set your PostgREST host here
 const POSTGREST_PORT = 3000 
-const DATABASE_NAME = "region_occupancy_capstone"
-
-
-func _ready():
-	request()
 
 func get_base_url() -> String:
-	return "http://%s:%s/%s" % [POSTGREST_HOST, POSTGREST_PORT, DATABASE_NAME]
+	return "http://%s:%s/" % [POSTGREST_HOST, POSTGREST_PORT]
 	
-func request():
+func query(query):
 	#printTime()
 	var http = HTTPRequest.new()
 	add_child(http)
-	http.request(get_base_url() + "?limit=1", [], HTTPClient.METHOD_GET)
+	http.request(get_base_url() + query, [], HTTPClient.METHOD_GET)
 	var result = await http.request_completed
 	var response = _parse_http_response(result)
-	print(response["body"])
+	http.queue_free()
+	return response['body']
 	#printTime()
 
 func _parse_http_response(res):

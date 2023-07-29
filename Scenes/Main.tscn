@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://j6u5ftoc6wn1"]
+[gd_scene load_steps=8 format=3 uid="uid://j6u5ftoc6wn1"]
 
 [ext_resource type="Script" path="res://Scripts/root.gd" id="1_irsp1"]
 [ext_resource type="Script" path="res://Scripts/CameraControls.gd" id="2_4m3mj"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://8bdifqgn8fy5" path="res://resources/menuIcon.png" id="3_cast4"]
 [ext_resource type="Script" path="res://Scripts/MenuButton.gd" id="4_086k4"]
 [ext_resource type="Script" path="res://Scripts/PostgreSQL.gd" id="6_5mg4s"]
+[ext_resource type="Script" path="res://Scenes/Data.gd" id="7_71k62"]
 
 [node name="Root" type="Node3D"]
 script = ExtResource("1_irsp1")
@@ -53,6 +54,7 @@ script = ExtResource("6_5mg4s")
 
 [node name="TEMPBUILDINGS" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.65, 0, -12.17)
+visible = false
 
 [node name="Building1" type="Node3D" parent="TEMPBUILDINGS"]
 
@@ -177,3 +179,6 @@ size = Vector3(0.03, 0.03, 0.03)
 [node name="CSGBox3D4" type="CSGBox3D" parent="TEMPBUILDINGS/Building3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.426, 0, -0.255)
 size = Vector3(0.03, 0.03, 0.03)
+
+[node name="Data" type="Node" parent="."]
+script = ExtResource("7_71k62")
