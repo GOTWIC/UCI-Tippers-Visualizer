@@ -5,7 +5,7 @@ var psql
 var binned
 var _timer
 
-var updateInterval = 3
+var updateInterval = 0.1
 
 func _ready():
 	data = {}
@@ -35,19 +35,24 @@ func updateData():
 	# Upload occupancy data in searchable format
 	for space in space_data_raw:
 		space_data[space['space_id']] = {'occupancy': space['occupancy'], 'time': space['time']}
+	
 	for metadata in space_metadata:
 		var sid = metadata['space_id'] 
 		var tid = metadata['space_type_id']
 		var pid = metadata['parent_space_id']
 		var occ = 0
-		
 		if tid == 3:
 			occ = space_data[sid]['occupancy']
-			
-		# Update occupancy of rooms only
-		if sid in data and tid == 3:
-			data[sid]['occupancy'] = occ
-		else: 
+		
+		# Update
+		if sid in data:
+			if tid == 3:
+				data[sid]['occupancy'] = occ
+			# Keep outdated floor + building occupancies
+			# instead of setting back to 0 for a fraction of a second
+		
+		# Create
+		else:
 			# Add to data
 			data[sid] = {
 				"name": metadata['space_name'],
@@ -71,6 +76,7 @@ func updateData():
 			else:
 				# No parent
 				pass
+
 		
 	# Update occupancy of floors and buildings 
 	# Start from smallest to largest layer, 
@@ -78,6 +84,7 @@ func updateData():
 	
 	updateParentOccupancy('f')
 	updateParentOccupancy('b')
+	sortFloors()
 	
 	return true
 		
@@ -89,7 +96,7 @@ func assignBin(tid):
 	elif tid == 3:
 		return 'r'
 	else:
-		print("INVALID SPACE TYPE FOUND (" + str(tid) + ") - DUMPING IN MISC")
+		#print("INVALID SPACE TYPE FOUND (" + str(tid) + ") - DUMPING IN MISC")
 		return 'm'
 		
 func updateParentOccupancy(bin):
@@ -104,5 +111,12 @@ func getData():
 	
 func getBinned():
 	return binned
+
+func sortFloors():
+	for b in binned['b']:
+		data[b]['children'].sort_custom(sortFunc)
+		
+func sortFunc(a,b):
+	return data[a ]['name'] < data[b]['name']
 
 		

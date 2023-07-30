@@ -16,6 +16,10 @@ var occupancyText
 
 var floors : Array = []
 
+var ID
+
+var dataObj
+var data
 
 func _ready():
 	originalColor = self.material.albedo_color
@@ -27,11 +31,14 @@ func _ready():
 	get_node("Area3D").mouse_entered.connect(self.mouseEnter)
 	get_node("Area3D").mouse_exited.connect(self.mouseExit)
 	
+	dataObj = get_tree().get_root().get_node("Root").get_node("Data")
+	
 	occupancyText = get_tree().get_root().get_node("Root").get_node("MapView").get_node("MapRenderer").get_node("PanelContainer").get_node("OccupancyDisplay")
 
 
 func _process(delta):
-	calculateOccupancy()
+	data = dataObj.getData()
+	fetchOccupancy()
 	zoom_percentage = get_tree().get_root().get_node("Root").get_node("MapView").get_node("Camera").getZoomPercentage()
 	hoverActions()
 	# Scale transparency to min/max transparency window
@@ -59,16 +66,15 @@ func hoverActions():
 		get_node("Area3D").visible = false
 		material.albedo_color = originalColor
 		
-func calculateOccupancy():
-	occupancy = 0
-	for floor in floors:
-		occupancy += floor.get_node("Polygon").getOccupancy()
+func fetchOccupancy():
+	occupancy = data[ID]['occupancy']
 	
 func setFloors(arrayOfFloors):
 	print("SETTING FLOORS")
 	floors = arrayOfFloors
 
-
+func setID(id):
+	ID = id
 		
 		
 	

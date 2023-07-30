@@ -18,7 +18,7 @@ func _ready():
 	get_node("GraphView").add_child(graphViewInst)
 	get_node("ListView").add_child(listViewInst)
 	
-	get_node("MapView").add_child(mapLoadingSceneInst)
+	#get_node("MapView").add_child(mapLoadingSceneInst)
 
 func _process(_delta):
 	pass

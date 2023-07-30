@@ -14,16 +14,16 @@ var tileSize = 2
 
 var tilesLoaded = 0
 
-var entity_hierarchy = {}
-
-# Not sure what dictates this
-# EDIT: The following is obsolete for now. Remove if map is doesn't seem off in the future
-var angledCameraTileOffset = 0.0
-
 var floorHeight = 0.2
+
+var data
+var binned
 
 func _ready():
 	mapCreationProcess()
+	# For now, wait three seconds to allow data to load
+	# before starting building rendering process
+	await get_tree().create_timer(3).timeout
 	buildingCreationProcess()
 	
 	
@@ -37,10 +37,10 @@ func mapCreationProcess():
 	var http3 = HTTPRequest.new()
 	var http4 = HTTPRequest.new()
 
-	add_child(http1)
-	add_child(http2)
-	add_child(http3)
-	add_child(http4)
+	get_node("HTTPReqs").add_child(http1)
+	get_node("HTTPReqs").add_child(http2)
+	get_node("HTTPReqs").add_child(http3)
+	get_node("HTTPReqs").add_child(http4)
 
 	var dlJobs = tileCoords.size() / 4
 
@@ -59,9 +59,9 @@ func downloadImgThread(http, dlJobs, start):
 		var blank = tile.instantiate()
 		var pixelSize = tileSize * 0.00390625 
 		blank.get_node("tileSprite").set_pixel_size(pixelSize)
-		blank.position = Vector3((colNum + origin.x) * tileSize, rowNum * angledCameraTileOffset, (rowNum + origin.z) * tileSize)
+		blank.position = Vector3((colNum + origin.x) * tileSize, 0 , (rowNum + origin.z) * tileSize)
 		blank.get_node("tileSprite").set_texture(texture)
-		add_child(blank)
+		get_node('Tiles').add_child(blank)
 		tilesLoaded += 1
 	print("Thread Finished")
 
@@ -84,34 +84,40 @@ func downloadImage(http, xCoord, yCoord):
 	return texture
 
 
+
 func buildingCreationProcess():
-	pass
-			
-			
-		
+	var dataObj = get_tree().get_root().get_node("Root").get_node("Data")
+	data = dataObj.getData()
+	binned = dataObj.getBinned()
 	
+	for building in binned['b']:
+		var points = getBuildingPoints(data[building]['location'])
+		var bID = building
+		var fIDs = data[bID]['children'] 
+		createBuilding(points, bID, fIDs)
 
 
+func getBuildingPoints(locJson):
+	var tempBuildings = get_tree().get_root().get_node("Root").get_node("TEMPBUILDINGS").get_children()
+	var tempBuilding = tempBuildings[0]
+	var tempPoints : PackedVector2Array
+	var refPoints = tempBuilding.get_children()
+	for refPoint in refPoints:
+		tempPoints.append(Vector2(refPoint.global_position[0], refPoint.global_position[2]))
+	return tempPoints
 
-func buildingCreationProcessHardcoded():
-	var rng = RandomNumberGenerator.new()
-	var buildings = get_tree().get_root().get_node("Root").get_node("TEMPBUILDINGS").get_children()
-	for building in buildings:
-		var points : PackedVector2Array
-		var refPoints = building.get_children()
-		for refPoint in refPoints:
-			points.append(Vector2(refPoint.global_position[0], refPoint.global_position[2]))
-		createBuilding(points, int(rng.randf_range(3, 7)))
-
-func createBuilding(points, numFloors):
-	var building = createPolygon(points, floorHeight * numFloors, true)
+func createBuilding(points, bID, fIDs):
+	var building = createPolygon(points, floorHeight * len(fIDs), true)
 	var floors = []
-	for i in range(numFloors):
+	for i in range(len(fIDs)):
+		var fID = fIDs[i]
 		var floor = createPolygon(points, floorHeight/10, false, building)
-		floor.name = "Floor " + str(i + 1) 
+		floor.name = data[fID]['name']
 		floor.position[1] = i * floorHeight
+		floor.get_node("Polygon").setID(fID)
 		floors.append(floor)
 	building.get_node("Polygon").setFloors(floors)
+	building.get_node("Polygon").setID(bID)
 
 func createPolygon(points : PackedVector2Array, height : float, isBuilding : bool, master = null):
 	var polygonInst = polygonPrefab.instantiate()
@@ -127,7 +133,7 @@ func createPolygon(points : PackedVector2Array, height : float, isBuilding : boo
 	if master:
 		master.add_child(polygonInst)
 	else:
-		add_child(polygonInst)
+		get_node('Buildings').add_child(polygonInst)
 	return polygonInst
 	
 func getMapLoadProgess():
