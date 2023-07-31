@@ -83,8 +83,6 @@ func downloadImage(http, xCoord, yCoord):
 	
 	return texture
 
-
-
 func buildingCreationProcess():
 	var dataObj = get_tree().get_root().get_node("Root").get_node("Data")
 	data = dataObj.getData()

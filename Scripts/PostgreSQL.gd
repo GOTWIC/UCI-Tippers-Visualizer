@@ -1,10 +1,9 @@
 extends Node
 
-const POSTGREST_HOST = "steptippers-caredex.ics.uci.edu" # set your PostgREST host here
-const POSTGREST_PORT = 3000 
+const POSTGREST_HOST = "steptippers-caredex.ics.uci.edu"
 
 func get_base_url() -> String:
-	return "http://%s:%s/" % [POSTGREST_HOST, POSTGREST_PORT]
+	return "https://%s/" % [POSTGREST_HOST]
 	
 func query(query):
 	#printTime()

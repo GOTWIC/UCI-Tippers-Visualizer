@@ -5,7 +5,7 @@ var psql
 var binned
 var _timer
 
-var updateInterval = 0.1
+var updateInterval = 2
 
 func _ready():
 	data = {}
@@ -19,7 +19,7 @@ func startTimer():
 	add_child(_timer)
 
 	_timer.timeout.connect(self._on_Timer_timeout)
-	_timer.set_wait_time(60 * updateInterval)
+	_timer.set_wait_time(updateInterval)
 	_timer.set_one_shot(false)
 	_timer.start()
 	
