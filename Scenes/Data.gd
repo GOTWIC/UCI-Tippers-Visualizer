@@ -11,7 +11,6 @@ func _ready():
 	data = {}
 	binned = {'b': [], 'f': [], 'r': [], 'm': []}
 	psql = get_tree().get_root().get_node("Root").get_node("PostgreSQL")
-	updateData()
 	startTimer()
 
 func startTimer():
@@ -42,7 +41,7 @@ func updateData():
 		var pid = metadata['parent_space_id']
 		var occ = 0
 		if tid == 3:
-			occ = space_data[sid]['occupancy']
+			occ = space_data[sid]['occupancy']	
 		
 		# Update
 		if sid in data:
