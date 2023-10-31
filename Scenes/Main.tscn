@@ -32,6 +32,7 @@ material = ExtResource("3_3j1kv")
 [node name="ListView" type="Node2D" parent="."]
 
 [node name="Navigation" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0

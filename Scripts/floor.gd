@@ -1,5 +1,7 @@
 extends CSGPolygon3D
 
+var floorplanPrefab = preload("res://Subscenes/floorplan.tscn")
+
 var minTransparency = 0.0
 var maxTransparency = 0.8
 var zoomVisibilityThreshold = 0.3
@@ -18,7 +20,9 @@ var occupancyText
 var ID
 
 var dataObj
-var data
+var data = 5
+
+var floorplan
 
 
 func _ready():
@@ -30,11 +34,22 @@ func _ready():
 	
 	get_node("Area3D").mouse_entered.connect(self.mouseEnter)
 	get_node("Area3D").mouse_exited.connect(self.mouseExit)
+	get_node("Area3D").input_event.connect(self.clicked)
 	
 	dataObj = get_tree().get_root().get_node("Root").get_node("Data")
-	
+	data = dataObj.getData()
 	
 	occupancyText = get_tree().get_root().get_node("Root").get_node("MapView").get_node("MapRenderer").get_node("PanelContainer").get_node("OccupancyDisplay")
+
+	var floorplanInst = floorplanPrefab.instantiate()
+	floorplanInst.setRooms(data[ID]['children'])
+	floorplanInst.name = "Floorplan"
+	floorplanInst.hide()
+	add_child(floorplanInst)
+	floorplan = floorplanInst
+	
+	
+	
 
 func _process(delta):
 	data = dataObj.getData()
@@ -52,6 +67,15 @@ func mouseEnter():
 func mouseExit():
 	hovering = false
 	occupancyText.text = "Occupancy: " 
+	
+func clicked(a,b,c,d,e):
+	if not b is InputEventMouseButton or b['button_index'] != 1 or b['button_mask'] != 1:
+		return
+	floorplan.show()
+	
+func _unhandled_input(event):
+	if floorplan.is_visible() and event.is_action_pressed("escape"):
+		floorplan.hide()
 	
 func hoverActions():
 	if hovering:

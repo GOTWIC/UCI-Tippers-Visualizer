@@ -5,6 +5,8 @@ const POSTGREST_HOST = "steptippers-caredex.ics.uci.edu"
 func get_base_url() -> String:
 	return "https://%s/" % [POSTGREST_HOST]
 	
+	# requres running this command
+	# GRANT SELECT ON pollutant_concentration TO web_anon;
 func query(query):
 	#printTime()
 	var http = HTTPRequest.new()

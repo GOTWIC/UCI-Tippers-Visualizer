@@ -4,17 +4,21 @@ var tile = preload("res://Subscenes/tile.tscn")
 var polygonPrefab = preload("res://Subscenes/Polygon.tscn")
 var buildingMaterial = preload("res://materials/building.tres")
 var floorMaterial = preload("res://materials/floor.tres")
+var barMaterial = preload("res://materials/bar.tres")
 
-var xDim
-var yDim
+var xDim = 5
+var yDim = 6
 var tileCoords = []
 
 var tileSize = 5
 var floorHeight = 0.2
-var zoom_level = 17
+var zoom_level = 12
 
 var data
 var binned
+
+var stats
+var timestamps
 
 var tilesLoaded = 0
 var built = []
@@ -22,12 +26,22 @@ var built = []
 var _timer
 
 func _ready():
-	await getData()
+	#await getData()
+	await sgetData()
+	
 	setTileSize()
-	await getTileCoords()
+	
+	#await getTileCoords()
+	await sgetTileCoords()
+
 	mapCreationProcess()
-	buildingCreationProcess()
-	startTimer()
+	
+	#buildingCreationProcess()
+	barCreationProcess()
+	
+	#startTimer()
+	
+	initializeTimeSlider()
 	
 func getData():
 	var dataObj = get_tree().get_root().get_node("Root").get_node("Data")
@@ -36,6 +50,8 @@ func getData():
 	binned = dataObj.getBinned()
 	
 func setTileSize():
+	if zoom_level == 12:
+		tileSize = 1
 	if zoom_level == 17:
 		tileSize = 5
 	elif zoom_level == 18:
@@ -59,6 +75,7 @@ func getTileCoords():
 	return true	
 
 func _process(_delta):
+	rotate(Vector3(0,1,0),0.001)
 	pass
 
 func startTimer():
@@ -73,7 +90,6 @@ func startTimer():
 func _on_Timer_timeout():
 	await getData()
 	buildingCreationProcess()
-
 
 func mapCreationProcess():
 
@@ -162,8 +178,6 @@ func downloadImage(http, xCoord, yCoord):
 	return texture
 
 
-
-
 func buildingCreationProcess():
 	var geo_origin = num2deg(tileCoords[yDim-1][0], tileCoords[yDim-1][1] + 1)
 	var geo_end = num2deg(tileCoords[len(tileCoords)-yDim][0] + 1, tileCoords[len(tileCoords)-yDim][1])
@@ -173,8 +187,6 @@ func buildingCreationProcess():
 			continue
 		else:
 			built.append(building)
-			print("Else - Creating New Building")
-		print("Process - Creating New Building")
 		var points = getBuildingPoints(data[building]['location'], geo_origin, geo_end)
 		var bID = building
 		var fIDs = data[bID]['children'] 
@@ -201,30 +213,31 @@ func getBuildingPoints(locJson, g_o, g_e):
 
 func ratiofy(coord, o, e):
 	return (float(coord) - o)/(e - o)
-	
 
 func createBuilding(points, bID, fIDs):
-	var building = createPolygon(points, floorHeight * len(fIDs), true)
+	var building = createPolygon(points, bID, floorHeight * len(fIDs), 1)
 	var floors = []
 	for i in range(len(fIDs)):
 		var fID = fIDs[i]
-		var floor = createPolygon(points, floorHeight/10, false, building)
+		var floor = createPolygon(points, fID, floorHeight/10, 0, building)
 		floor.name = data[fID]['name']
 		floor.position[1] = i * floorHeight
-		floor.get_node("Polygon").setID(fID)
 		floors.append(floor)
 	building.get_node("Polygon").setFloors(floors)
-	building.get_node("Polygon").setID(bID)
 
-func createPolygon(points : PackedVector2Array, height : float, isBuilding : bool, master = null):
+func createPolygon(points : PackedVector2Array, ID, height : float, type : int, master = null):
 	var polygonInst = polygonPrefab.instantiate()
 	var poly = polygonInst.get_node("Polygon")
-	if isBuilding:
+	if type == 0:
 		poly.set_script(load("res://Scripts/building.gd"))
 		poly.material = buildingMaterial.duplicate()
-	else:
+	elif type == 1:
 		poly.set_script(load("res://Scripts/floor.gd"))
 		poly.material = floorMaterial.duplicate()
+	elif type == 2:
+		poly.set_script(load("res://Scripts/bar.gd"))
+		poly.material = barMaterial.duplicate()
+	poly.setID(ID)
 	poly.polygon = points
 	poly.depth = height
 	if master:
@@ -232,9 +245,6 @@ func createPolygon(points : PackedVector2Array, height : float, isBuilding : boo
 	else:
 		get_node('Buildings').add_child(polygonInst)
 	return polygonInst
-	
-	
-	
 	
 func getMapLoadProgess():
 	return [tilesLoaded, xDim * yDim]
@@ -262,4 +272,53 @@ func rad2deg(rad):
 func asinh(x: float) -> float:
 	return log(x + sqrt(x * x + 1.0))
 			
-			
+
+
+# SRIRAM
+
+func sgetData():
+	var dataObj = get_tree().get_root().get_node("Root").get_node("Data")
+	var res = await dataObj.updateSData()
+	data = dataObj.sgetData()
+	stats = dataObj.sgetStats()
+	timestamps = dataObj.sgetTimestamps()
+	
+func sgetTileCoords():
+	var longlatcoords = []
+
+	for row in data:
+		for loc in data[row]['location']:
+			var converted = deg2num(float(loc['lat']), float(loc['lng']))
+			longlatcoords.append([converted[0], converted[1]])
+		
+		
+	var result = getAllTileCoords(longlatcoords)
+	tileCoords = result[0]
+	xDim = result[1][0]		
+	yDim = result[1][1]	
+	
+	return true	
+	
+func barCreationProcess():
+	var geo_origin = num2deg(tileCoords[yDim-1][0], tileCoords[yDim-1][1] + 1)
+	var geo_end = num2deg(tileCoords[len(tileCoords)-yDim][0] + 1, tileCoords[len(tileCoords)-yDim][1])
+		
+	for box in data:
+		if box in built:
+			continue
+		else:
+			built.append(box)
+		var points = getBuildingPoints(data[box]['location'], geo_origin, geo_end)
+
+		var conc = data[box]['instances'][data[box]['instances'].keys().max()][0]
+
+		createBox(points, box, conc)
+		
+func createBox(points, bID, height):
+	var box = createPolygon(points, bID, 0.0001, 2)
+
+func initializeTimeSlider():
+	var slider = get_node("TimeSlider")
+	slider.min_value = 0
+	slider.max_value = len(timestamps)-1
+	slider.step = 1

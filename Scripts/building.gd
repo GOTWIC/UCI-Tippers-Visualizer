@@ -70,7 +70,6 @@ func fetchOccupancy():
 	occupancy = data[ID]['occupancy']
 	
 func setFloors(arrayOfFloors):
-	print("SETTING FLOORS")
 	floors = arrayOfFloors
 
 func setID(id):
